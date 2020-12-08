@@ -13,16 +13,16 @@
 	<div class="ui main container" id="app">
 		<div class="ui search">
 			<div class="ui icon input">
-				<input class="prompt" type="text" v-model="search" placeholder="filtrer" v-on:focus="">
+				<input class="prompt" type="text" v-model="search" placeholder="filtrer" v-on:focus="searching = true;">
 				<i class="search icon"></i>
 			</div>
 		</div>
 
-		<div class="ui list" id="list">
+		<div class="ui list" id="list" v-show="searching">
 			<a 
 				class="item" 
 				v-for="song in filteredSongs" 
-				v-on:click="paroles = song.lyrics.verse;">{{ song.properties.songbooks.songbook._entry }} {{ song.properties.titles.title }}</a>
+				v-on:click="paroles = song.lyrics.verse; copyright = song.properties.copyright; searching = false;">{{ song.properties.songbooks.songbook._entry }} {{ song.properties.titles.title }}</a>
 		</div>
 
 		<div class="ui items" v-show="paroles" v-if="!!paroles">
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- <p>{{ song.properties.copyright }}</p> -->
+		<p>{{ copyright }}</p>
 	</div>
 
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>

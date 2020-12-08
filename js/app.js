@@ -3,8 +3,8 @@ new Vue({
 	data: {
 		paroles: {},
 		copyright: '',
-		link: 'http://google.com',
 		selected: false,
+		searching: true,
 		search: '',
 		songs: [
 	{
