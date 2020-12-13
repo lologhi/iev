@@ -730,14 +730,14 @@ new Vue({
 	},
 	computed: {
 	    filteredSongs() {
-	      return = this.songs.filter( song => {
+	      results = this.songs.filter( song => {
 	      	if (this.isInt(this.search)) {
 	      		return song.properties.songbooks.songbook._entry.indexOf(parseInt(this.search, 10)) > -1
 	      	} else {
 	      		return song.properties.titles.title.indexOf(this.search.toLowerCase()) > -1
 	      	}
 	      })
-	      // return results.sort((a, b) => (a.properties.songbooks.songbook._entry > b.properties.songbooks.songbook._entry) ? 1 : -1);
+	      return results.sort((a, b) => (a.properties.songbooks.songbook._entry > b.properties.songbooks.songbook._entry) ? 1 : -1);
 	    },
 	}
 })
